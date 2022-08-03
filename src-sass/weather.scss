@@ -59,6 +59,13 @@ body {
   background-color: $font-color;
 }
 
+.temp-toggle-mouse {
+  > span:nth-child(odd)::before,
+  > span:nth-child(odd)::after {
+    content: " ";
+  }
+}
+
 .temp-toggle-mouse:hover,
 .temp-toggle-mouse:active {
   cursor: pointer;
@@ -70,9 +77,12 @@ body {
 }
 
 .temp-bttn-touch {
-  display: inline-block;
-  width: 6em;
-  height: 6em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 6rem; // 6em;
+  height: 6rem; // 6em;
   border-radius: 50%;
 }
 
