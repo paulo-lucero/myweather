@@ -1,0 +1,51 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>My Weather</title>
+        <meta name="description" content="A simple site for providing the weather data on your current location.">
+        <link rel="stylesheet" href="weather.css">
+    </head>
+    <body>
+        <div id="w-loading" class="w-altpage">
+            <div>
+                <div>Kindly Wait. Please allow the site to access your location</div>
+                <div>Don't worry. Your location data will not be collected at our side</div>
+            </div>
+        </div>
+        <div id="w-error" class="w-closed w-altpage">
+            <div>
+                <p>It seems there is an error, it either caused by the following:</p>
+                <p>Your browser doesn't support <code>geolocation</code>. Please use an updated version of Firefox, Google Chrome or Edge.</p>
+                <p>Access to your location data is denied. Please allow the site to access it. Don't worry. Your location data will not be collected at our side. If your device has GPS feature, please turn it on, especially on mobile users.</p>
+            </div>
+        </div>
+        <div id="body-cont" dir="ltr">
+            <div id="w-cont" dir="ltr">
+                <div>
+                    <div class="w-title">Current Location</div>
+                    <div class="w-body" dir="ltr" >
+                        <span id="w-cityname"></span>
+                    </div>
+                </div>
+                <div>
+                    <div class="w-title">Weather</div>
+                    <div id="w-weather-data" class="w-body" dir="ltr" >
+                        <span id="w-weathername" class="w-weather-items"></span>
+                        <img id="w-weathericon" class="w-weather-items">
+                    </div>
+                </div>
+                <div>
+                    <div class="w-title">Temperature</div>
+                    <div class="w-body" dir="ltr" >
+                        <div id="w-temp-cont" dir="ltr" >
+                            <span id="w-temp"></span>
+                            <button id="temp-toggle" >Change To <span id="temp-type" ></span></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="weather.js"></script>
+    </body>
+</html>

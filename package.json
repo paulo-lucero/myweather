@@ -1,0 +1,16 @@
+{
+  "name": "weathersite",
+  "version": "1.0.0",
+  "description": "simple site for providing weather data based user location",
+  "main": "index.html",
+  "scripts": {
+    "sass-build": "sass src-sass:docs"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^8.21.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.26.0"
+  }
+}
