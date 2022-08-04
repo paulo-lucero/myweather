@@ -4,11 +4,15 @@
   "description": "simple site for providing weather data based user location",
   "main": "index.html",
   "scripts": {
-    "sass-build": "sass src-sass:docs"
+    "prebuild": "sass src-sass:docs",
+    "build": "npx babel src-js -o docs/weather.js"
   },
   "author": "",
   "license": "MIT",
   "devDependencies": {
+    "@babel/cli": "^7.18.10",
+    "@babel/core": "^7.18.10",
+    "@babel/preset-env": "^7.18.10",
     "eslint": "^8.21.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.26.0"
