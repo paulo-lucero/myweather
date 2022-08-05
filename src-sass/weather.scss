@@ -60,6 +60,9 @@ body {
 }
 
 .temp-toggle-mouse {
+  display: inline-block;
+  width: 9.5rem;
+  height: 1.3rem;
   > span:nth-child(odd)::before,
   > span:nth-child(odd)::after {
     content: " ";

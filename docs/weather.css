@@ -50,6 +50,11 @@ body {
   background-color: #15427A;
 }
 
+.temp-toggle-mouse {
+  display: inline-block;
+  width: 9.5rem;
+  height: 1.3rem;
+}
 .temp-toggle-mouse > span:nth-child(odd)::before,
 .temp-toggle-mouse > span:nth-child(odd)::after {
   content: " ";
