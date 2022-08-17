@@ -203,7 +203,7 @@ async function getLocalWeather(geoLoc) {
   let curWeather = PrevGeo.isSame(latt, longt, Date.now());
   if (curWeather) {
     curWeather = JSON.parse(PrevGeo.weather);
-    console.log('Same coordinates and not more than 10 minutes yet passed');
+    // console.log('Same coordinates and not more than 10 minutes yet passed');
   } else {
     const fetchWeather = await fetch(
       `https://api.openweathermap.org/data/2.5/weather?lat=${latt}&lon=${longt}&appid=${weatherAPI}`
@@ -212,7 +212,7 @@ async function getLocalWeather(geoLoc) {
     if (fetchWeather.ok) {
       curWeather = await fetchWeather.json();
       PrevGeo.weatherJson = JSON.stringify(curWeather);
-      console.log('New coordinates or more than 10 minutes has passed');
+      // console.log('New coordinates or more than 10 minutes has passed');
     } else {
       let mesg;
       try {
