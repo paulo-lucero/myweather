@@ -57,29 +57,6 @@ body {
   border: 0px;
   color: $backg-color;
   background-color: $font-color;
-}
-
-.temp-toggle-mouse {
-  display: inline-block;
-  width: 9.5rem;
-  height: 1.3rem;
-  > span:nth-child(odd)::before,
-  > span:nth-child(odd)::after {
-    content: " ";
-  }
-}
-
-.temp-toggle-mouse:hover,
-.temp-toggle-mouse:active {
-  cursor: pointer;
-  background-color: #0A213D !important;
-}
-
-.temp-toggle-touch {
-  background-color: #0A213D !important;
-}
-
-.temp-bttn-touch {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -87,6 +64,20 @@ body {
   width: 6rem; // 6em;
   height: 6rem; // 6em;
   border-radius: 50%;
+
+  &, &:hover {
+    box-shadow: 0px 6px 10px 4px rgba(0, 0, 0, 0.15), 0px 2px 3px rgba(0, 0, 0, 0.3);
+  }
+
+  &:hover,
+  &:active {
+    cursor: pointer;
+    background-color: #0A213D !important;
+  }
+
+  &:active {
+    box-shadow: none;
+  }
 }
 
 #w-weathericon {
@@ -140,7 +131,9 @@ body {
     max-width: 90vw;
     
     > div, p {
-      margin: 5px 0;
+      margin: 12px 0;
+      text-align: center;
+      font-size: 18px;
     }
     
     > p:first-child {

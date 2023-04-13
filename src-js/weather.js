@@ -1,36 +1,3 @@
-function createEle(eleName, inhtml, eleCls = null, idName = null, custAtr = null, data = null) {
-  // assign "inhtml" as null, if there is no innerHTML
-  const eleObj = document.createElement(eleName);
-  if (inhtml) {
-    if (Array.isArray(inhtml)) {
-      inhtml.forEach(function(noteEle) { eleObj.appendChild(noteEle); });
-    } else if (typeof inhtml === 'object') {
-      eleObj.appendChild(inhtml);
-    } else {
-      eleObj.innerHTML = inhtml;
-    }
-  }
-  if (eleCls) {
-    if (Array.isArray(eleCls)) {
-      eleCls.forEach(function(clsN) { eleObj.classList.add(clsN); });
-    } else {
-      eleObj.className = eleCls;
-    }
-  }
-  if (idName) {
-    eleObj.id = idName;
-  }
-  if (custAtr && typeof custAtr === 'object') {
-    Object.keys(custAtr).forEach(eleAtr => eleObj.setAttribute(eleAtr, custAtr[eleAtr]));
-  }
-  if (data && typeof data === 'object') {
-    Object.keys(data).forEach(dataK => {
-      eleObj.dataset[dataK] = data[dataK];
-    });
-  }
-  return eleObj;
-}
-
 function removeData(noteData) {
   let noteInfos;
   if (!Array.isArray(noteData)) {
@@ -43,12 +10,6 @@ function removeData(noteData) {
       noteInfo.removeChild(noteInfo.firstChild);
     }
   }
-}
-
-function isTouchDevice() {
-    return ( 'ontouchstart' in window ) ||
-           ( navigator.maxTouchPoints > 0 ) ||
-           ( navigator.msMaxTouchPoints > 0 );
 }
 
 function storageAvailable(type) {
@@ -149,17 +110,7 @@ function captBeg(lttr) {
   return lttr.toUpperCase();
 }
 
-function toggleTempUnit(evt) {
-  const evtType = evt.type;
-  const isNotEmpty = !!tempEle.firstChild;
-  if (isNotEmpty && evtType === 'mousedown' && evt.button !== 0) return;
-  if (evtType === 'touchstart') {
-    if (isNotEmpty) tempToggleEle.classList.add('temp-toggle-touch');
-  } else if (evtType === 'touchend') {
-    tempToggleEle.classList.remove('temp-toggle-touch');
-    return;
-  }
-  
+function toggleTempUnit() {
   const tempData = tempEle.dataset;
   const tempScale = tempData.tempscale.toLowerCase();
   let temp = Number.parseFloat(tempData.temp);
@@ -247,23 +198,14 @@ async function getLocalWeather(geoLoc) {
   tempEle.dataset.tempscale = 'kel';
   tempEle.dataset.temp = locTemp;
     
-  const isTouch = isTouchDevice();
-  if (!isTouch) {
-    tempToggleEle.addEventListener('mousedown', toggleTempUnit);
-    tempToggleEle.classList.add('temp-toggle-mouse');
-  } else {
-    tempToggleEle.addEventListener('touchstart', toggleTempUnit);
-    tempToggleEle.addEventListener('touchend', toggleTempUnit);
-    tempToggleEle.classList.add('temp-bttn-touch');
-  }
-  
-  const clickEvt = new Event(isTouch ? 'touchstart' : 'mousedown');
-  tempToggleEle.dispatchEvent(clickEvt);
+  tempToggleEle.addEventListener('click', toggleTempUnit);
+
+  toggleTempUnit()
   
   loadingEle.classList.add('w-closed');
 }
 
-function getLocalWError(geoErr) {
+function getLocalWError() {
   document.getElementById('w-error').classList.remove('w-closed');
   document.getElementById('w-loading').classList.add('w-closed');
 }
